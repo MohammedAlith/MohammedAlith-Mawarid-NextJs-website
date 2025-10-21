@@ -1,41 +1,35 @@
-// app/[locale]/layout.tsx
-import { NextIntlClientProvider } from "next-intl";
-import { getLocale } from "next-intl/server";
 import React from "react";
+import { NextIntlClientProvider } from "next-intl";
 import Header from "../components/Header/Header";
-import requestConfig from "../../i18n/request";
 import MenuHeader from "../components/MenuHeader/MenuHeader";
 import BaseFooter from "../components/BaseFooter";
 import FooterBottom from "../components/Footer";
-
+import requestConfig from "../../i18n/request";
 
 interface LocaleLayoutProps {
   children: React.ReactNode;
-  params: { locale: string };
+  params:  Promise<{ locale: string }>;
 }
 
-export default async function LocaleLayout({ children, params }: LocaleLayoutProps) {
+export default async function LocaleLayout({ children, params }: LayoutProps<"/[locale]">): Promise<React.ReactNode> {
+  const { locale } = await params;
+  const resolvedLocale = locale ?? "ar";
+  const isRtl = ["ar", "he"].includes(resolvedLocale);
 
-  let locale = params.locale;
-
-  
-  if (!locale) locale = "ar";
-
-  const isRtl = ["ar", "he"].includes(locale);
-
-  // Fetch translation messages
-  const messages = await requestConfig({ requestLocale: Promise.resolve(locale) });
+  const messages = await requestConfig({
+    requestLocale: Promise.resolve(resolvedLocale),
+  });
 
   return (
-    <NextIntlClientProvider messages={messages} locale={locale}>
+    <NextIntlClientProvider messages={messages} locale={resolvedLocale}>
       <div dir={isRtl ? "rtl" : "ltr"}>
         <Header />
-        <MenuHeader/>
+        <MenuHeader />
         <main>{children}</main>
-         <BaseFooter/>
-      <FooterBottom/>
+        <BaseFooter />
+        <FooterBottom />
       </div>
-     
     </NextIntlClientProvider>
   );
 }
+

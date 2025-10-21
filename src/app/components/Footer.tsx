@@ -1,4 +1,4 @@
-import Image from "next/image";
+"use client"
 import { useLocale } from "next-intl";
 
 export default function FooterBottom() {

@@ -9,11 +9,11 @@ export default function middleware(req:any) {
 
   // Redirect root `/` to `/ar`
   if (url.pathname === '/') {
-    url.pathname = '/ar';
-    return NextResponse.redirect(url);
+ 
+    return intlMiddleware(req);
   }
 
-  return intlMiddleware(req);
+
 }
 
 export const config = {

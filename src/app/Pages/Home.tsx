@@ -41,12 +41,12 @@ export default async function Home({ locale }: { locale: 'ar' | 'en' }){
 <>
 
 <div className="relative pb-12">
-<Banner banners={BannerItems} locale={locale}/> 
-<div className=" relative bottom-30 w-screen px-8">
-  <ServiceBox servicesbox={Services} />
+  <Banner banners={BannerItems} locale={locale} />
+  <div className="absolute top-80 left-0 w-full px-8">
+    <ServiceBox servicesbox={Services} />
+  </div>
 </div>
 
-</div>
 <ServicesSection services={serviceSection}></ServicesSection>
 <Achievements achieve={Achievement}/>
 <Certificates  certificateEn={CertificateEn}
