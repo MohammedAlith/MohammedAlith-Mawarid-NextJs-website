@@ -1,12 +1,11 @@
-
 // import other sections as needed
-
+import Services from "@/app/Pages/ServicesPage";
 export const dynamic = "force-static";
 
 // Generate all combinations of locales and sections
 export function generateStaticParams() {
   const locales = ["ar", "en"];
-  const sections = ["about" /*, "contact", "signIn", etc. */];
+  const sections = ["about", "services" /*, "contact", "signIn", etc. */];
 
   const params: { locale: string; section: string }[] = [];
   locales.forEach((locale) => {
@@ -18,7 +17,11 @@ export function generateStaticParams() {
 }
 
 // Server component for dynamic section pages
-export default async function SectionPage({ params }: { params: { locale: string; section: string } }) {
+export default async function SectionPage({
+  params,
+}: {
+  params: { locale: string; section: string };
+}) {
   const { locale, section } = params;
   const isRtl = locale === "ar";
 
@@ -27,6 +30,10 @@ export default async function SectionPage({ params }: { params: { locale: string
   switch (section) {
     case "about":
       // Component = locale === "ar" ? <AboutAr /> : <AboutEn />;
+      break;
+
+    case "services":
+      Component = <Services locale={locale as "ar" | "en"} />;
       break;
 
     // Add other sections:

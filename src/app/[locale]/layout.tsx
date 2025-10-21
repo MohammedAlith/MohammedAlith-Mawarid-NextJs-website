@@ -5,6 +5,7 @@ import MenuHeader from "../components/MenuHeader/MenuHeader";
 import BaseFooter from "../components/BaseFooter";
 import FooterBottom from "../components/Footer";
 import requestConfig from "../../i18n/request";
+import { useLocale } from 'next-intl';
 
 interface LocaleLayoutProps {
   children: React.ReactNode;
@@ -24,7 +25,7 @@ export default async function LocaleLayout({ children, params }: LayoutProps<"/[
     <NextIntlClientProvider messages={messages} locale={resolvedLocale}>
       <div dir={isRtl ? "rtl" : "ltr"}>
         <Header />
-        <MenuHeader />
+        <MenuHeader/>
         <main>{children}</main>
         <BaseFooter />
         <FooterBottom />

@@ -5,7 +5,7 @@
 :root {
   --background: #ffffff;
   --foreground: #171717;
-   --xl:1200;
+  
 }
 
 @theme inline {
@@ -29,6 +29,7 @@ body {
   color: var(--foreground);
   /* font-family:  Arial, Helvetica, sans-serif; */
    font-family: "DIN Next LT Arabic", sans-serif;
+    --xl:1200;
 
  
  
@@ -45,6 +46,8 @@ body {
   font-family: "DIN Next LT Arabic Bold", sans-serif;
   
 }
+
+
 
 .login li{
   font-family: 'DINNextLTArabic-Medium';
@@ -115,6 +118,7 @@ body {
 
 .base-footer ul{
     list-style-type: none;
+   
 }
 .base-footer ul li{
     margin-bottom: 5px;

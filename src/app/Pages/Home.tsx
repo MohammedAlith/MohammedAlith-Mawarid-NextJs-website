@@ -30,12 +30,17 @@ export default async function Home({ locale }: { locale: 'ar' | 'en' }){
         (item: any) => item.WorkItemType === 'certificate' && item.ParentId === 92
       );
 
+          const servicePage1 = items.filter(
+        (item: any) => item.WorkItemType === 'Service' && item.ParentId === 54
+      );
+
     //   console.log('Home',serviceSection);
     //       console.log('Banner',Banner);
     //           console.log('Services',Services);
     //            console.log('Achieve',Achievement);
-      console.log('certificate', CertificateEn);
-         console.log('certificatear', CertificateAr);
+      // console.log('certificate', CertificateEn);
+      //    console.log('certificatear', CertificateAr);
+      console.log("service1", servicePage1)  
     return(
 
 <>
@@ -47,7 +52,7 @@ export default async function Home({ locale }: { locale: 'ar' | 'en' }){
   </div>
 </div>
 
-<ServicesSection services={serviceSection}></ServicesSection>
+<ServicesSection  aboutItems={serviceSection}  ></ServicesSection>
 <Achievements achieve={Achievement}/>
 <Certificates  certificateEn={CertificateEn}
         certificateAr={CertificateAr}

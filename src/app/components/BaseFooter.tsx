@@ -27,21 +27,22 @@ export default function BaseFooter() {
   return (
     <div dir={isArabic ? "rtl" : "ltr"}
     className=" px-18 py-20 base-footer container m-auto" >
-      <div className="w-fit">
+      <div className="w-screen">
         <ul
-          className={` ${
+          className={`w-1/6 font-Medium ${
             isArabic ? "text-right" : "text-left"
           }`}
         >
           {links.map((item, index) => (
-            <li key={index}>
+            <li key={index}
+            >
               <a
                 href={item.href}
                
               >
                 {item.label}
               </a>
-              <div className="h-[2px] theme-bgcolor w-auto mt-2"></div>
+              <div className="h-[2px] theme-bgcolor w-full mt-2"></div>
             </li>
           ))}
         </ul>
